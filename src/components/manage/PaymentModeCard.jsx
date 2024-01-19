@@ -1,0 +1,68 @@
+'use client';
+import { useRouter } from 'next/navigation';
+
+const PaymentModeCard = ({ payment_mode }) => {
+  const router = useRouter();
+  const handlePaymentDelete = async () => {
+    try {
+      const request = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/paymentmodes/${payment_mode._id}`,
+        { method: 'DELETE', cache: 'no-store' }
+      );
+      if (request.ok) {
+        const resp = await request.json();
+        router.refresh();
+        return resp;
+      } else {
+        console.log(request.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <div className='flex flex-col items-center justify-center w-full gap-2 border rounded-lg shadow-sm h-44'>
+      <label
+        htmlFor='payment_mode_name'
+        className='text-base font-bold text-slate-600'
+      >
+        Name :
+        <span className='text-base font-semibold'>
+          {payment_mode.payment_mode_name}
+        </span>
+      </label>
+      <label
+        htmlFor='payment_mode_name'
+        className='text-base font-bold text-slate-600'
+      >
+        Type :
+        <span className='text-base font-semibold'>
+          {payment_mode.payment_mode_type}
+        </span>
+      </label>
+      <label
+        htmlFor='payment_mode_name'
+        className='text-base font-bold text-slate-600'
+      >
+        Added On :
+        <span className='text-base font-semibold'>
+          {payment_mode.createdAt}
+        </span>
+      </label>
+      <div className='flex items-center justify-around w-full'>
+        <button className='w-1/5 py-1 tracking-wider text-white bg-green-700 rounded-lg'>
+          Edit
+        </button>
+        <button
+          className='w-1/5 py-1 tracking-wider text-white bg-red-900 rounded-lg'
+          onClick={handlePaymentDelete}
+        >
+          Delete
+        </button>
+      </div>
+      
+    </div>
+  );
+};
+
+export default PaymentModeCard;

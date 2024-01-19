@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import { LogoutIcon } from '../AllSvgs';
 import { signOut } from 'next-auth/react';

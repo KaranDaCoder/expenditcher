@@ -9,14 +9,14 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
-      },
-      checks: ['none']
+      // authorization: {
+      //   params: {
+      //     prompt: 'consent',
+      //     access_type: 'offline',
+      //     response_type: 'code',
+      //   },
+      // },
+      checks: ['none'],
     }),
   ],
   callbacks: {
@@ -31,6 +31,7 @@ export const authOptions = {
       session.user._id = currentSession._id.toString();
       session.user.username = currentSession.username.toString();
       session.user.isAdmin = currentSession.isAdmin;
+      session.user
       return session;
     },
     async signIn({ profile }) {
@@ -72,11 +73,39 @@ export const authOptions = {
         console.log(`Something went wrong!`);
       }
     },
+     async authorized({ token, req }) {
+            // Route protection
+            const session = await getToken({
+              req,
+              secret: process.env.NEXTAUTH_SECRET,
+              cookieName:
+                process.env.NODE_ENV === 'production'
+                  ? '__Secure-next-auth.session-token'
+                  : 'next-auth.session-token',
+            });
+            const pathname = req.nextUrl.pathname
+            const isAuth = !!token
+
+            const notSensitiveRoutes = ['/', '/pricing', '/api/auth/signin', '/api/auth/callback/credentials', '/api/auth/session']
+
+            console.log(token)
+            console.log(session)
+            console.log(req.cookies)
+
+            if (!isAuth && !notSensitiveRoutes.some((route) => (pathname === route)) && pathname.startsWith('/api')) {
+                return false
+            } else if (!isAuth && !notSensitiveRoutes.some((route) => (pathname === route))) {
+                return false
+            }
+            return true
+        },
     pages: {
       signIn: '/',
       error: '/',
       newUser: '/',
     },
   },
+ 
 };
+
 export const getAuthSession = () => getServerSession(authOptions);

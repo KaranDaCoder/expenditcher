@@ -10,7 +10,7 @@ const fetchUserId = async (user_id) => {
   try {
     const request = await fetch(
       `${process.env.NEXTAUTH_URL}/api/users/${user_id}`,
-      { method: 'GET', cache: 'no-cache', headers: headers() }
+      { method: 'GET', cache: 'no-cache', headers: {Cookie : cookies()} }
     );
     if (request.ok) {
       const resp = await request.json();

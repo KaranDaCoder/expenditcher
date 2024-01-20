@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import UserInfo from '@/components/manage/UserInfo';
 import AddPaymentMode from '@/components/manage/AddPaymentMode';
 import PaymentModeCard from '@/components/manage/PaymentModeCard';
+import { cookies } from 'next/headers';
 
 const fetchUserId = async (user_id) => {
   try {
@@ -22,8 +23,21 @@ const fetchUserId = async (user_id) => {
   }
 };
 const getUserPaymentModes = async() => {
+  const c = cookies();
+  console.log(c)
+
   try {
-    const request = await fetch(`${process.env.NEXTAUTH_URL}/api/paymentmodes` , {method: 'GET' , cache:'no-store' , headers:headers()});
+    const request = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/paymentmodes`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+        redirect: 'follow',
+        headers: {
+          Cookie : c
+        }
+      }
+    );
     if(request.ok) {
       const resp = await request.json();
       return resp;

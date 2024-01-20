@@ -28,7 +28,6 @@ export const authOptions = {
       if (!currentSession) {
         return;
       }
-      // console.log(session)
       session.user._id = currentSession._id.toString();
       session.user.username = currentSession.username.toString();
       session.user.isAdmin = currentSession.isAdmin;
@@ -78,8 +77,10 @@ export const authOptions = {
       error: '/',
       newUser: '/',
     },
+    // session: {
+    //   maxAge: 30 * 24,
+    // },
   },
- 
 };
 
 export const getAuthSession = () => getServerSession(authOptions);

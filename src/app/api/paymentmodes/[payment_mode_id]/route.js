@@ -24,6 +24,8 @@ export const DELETE = async (request, { params }) => {
    }
    const paymentModeToDelete = await PaymentMode.findByIdAndDelete(payment_mode_id);
    return new NextResponse(JSON.stringify(`Successfully Deleted the payment`), {status:201})
-  } catch (error) {}
-  return new NextResponse(JSON.stringify(`Something went wrong`) , {status:500})
+  } catch (error) {
+   console.log(error)
+   return new NextResponse(JSON.stringify(`Something went wrong`) , {status:500})
+  }
 };

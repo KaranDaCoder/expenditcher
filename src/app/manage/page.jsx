@@ -1,6 +1,5 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { headers } from 'next/headers';
 import UserInfo from '@/components/manage/UserInfo';
 import AddPaymentMode from '@/components/manage/AddPaymentMode';
 import PaymentModeCard from '@/components/manage/PaymentModeCard';
@@ -23,9 +22,6 @@ const fetchUserId = async (user_id) => {
   }
 };
 const getUserPaymentModes = async() => {
-  const c = cookies();
-  console.log(c)
-
   try {
     const request = await fetch(
       `${process.env.NEXTAUTH_URL}/api/paymentmodes`,
@@ -34,8 +30,8 @@ const getUserPaymentModes = async() => {
         cache: 'no-store',
         redirect: 'follow',
         headers: {
-          Cookie : c
-        }
+          Cookie: cookies()
+        },
       }
     );
     if(request.ok) {

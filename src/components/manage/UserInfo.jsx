@@ -1,6 +1,6 @@
-import React from 'react'
+import moment from 'moment';
 
-const UserInfo = ({data}) => {
+const UserInfo = ({ data }) => {
   return (
     <div className='flex flex-col items-start justify-center w-full h-full p-4 py-8 space-y-2 border shadow-md rounded-xl'>
       <h2 className='w-full text-2xl font-semibold text-center underline uppercase underline-offset-4 text-slate-600'>
@@ -12,7 +12,10 @@ const UserInfo = ({data}) => {
           className='m-1 text-lg font-bold capitalize text-slate-700'
         >
           first name :{' '}
-          <span className='text-base font-semibold text-slate-600' id='firstName'>
+          <span
+            className='text-base font-semibold text-slate-600'
+            id='firstName'
+          >
             {data?.firstName}
           </span>
         </label>
@@ -49,7 +52,7 @@ const UserInfo = ({data}) => {
         >
           user since :{' '}
           <span className='text-base font-semibold text-slate-600'>
-            {data?.createdAt}
+            {moment(data?.createdAt).format('MMMM Do YYYY')}
           </span>
         </label>
       </div>
@@ -63,6 +66,6 @@ const UserInfo = ({data}) => {
       </div>
     </div>
   );
-}
+};
 
-export default UserInfo
+export default UserInfo;

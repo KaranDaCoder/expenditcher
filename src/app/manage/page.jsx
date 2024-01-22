@@ -3,53 +3,14 @@ import { authOptions } from '@/lib/auth';
 import UserInfo from '@/components/manage/UserInfo';
 import AddPaymentMode from '@/components/manage/AddPaymentMode';
 import PaymentModeCard from '@/components/manage/PaymentModeCard';
-import { cookies } from 'next/headers';
+import { fetchLoggedInUserDetails , getUserPaymentModes } from '@/lib/apiRequests';
 
-const fetchUserId = async (user_id) => {
-  try {
-    const request = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/users/${user_id}`,
-      { method: 'GET', cache: 'no-cache', headers: {Cookie : cookies()} }
-    );
-    if (request.ok) {
-      const resp = await request.json();
-      return resp;
-    } else {
-      throw new Error(request.error);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-const getUserPaymentModes = async() => {
-  try {
-    const request = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/paymentmodes`,
-      {
-        method: 'GET',
-        cache: 'no-store',
-        redirect: 'follow',
-        headers: {
-          Cookie: cookies()
-        },
-      }
-    );
-    if(request.ok) {
-      const resp = await request.json();
-      return resp;
-    } else {
-      throw new Error(request.error)
-    }
-  } catch (error) {
-    console.log(error)
-  }
-}
 const ManageUser = async () => {
   const {
     user: { _id, username },
   } = await getServerSession(authOptions);
 
-  const data = await fetchUserId(_id);
+  const data = await fetchLoggedInUserDetails(_id);
   const { all_payment_modes, results } = await getUserPaymentModes();
 
   return (

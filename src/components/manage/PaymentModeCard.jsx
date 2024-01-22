@@ -1,4 +1,5 @@
 'use client';
+import moment from 'moment';
 import { useRouter } from 'next/navigation';
 
 const PaymentModeCard = ({ payment_mode }) => {
@@ -46,7 +47,7 @@ const PaymentModeCard = ({ payment_mode }) => {
       >
         Added On :
         <span className='text-base font-semibold'>
-          {payment_mode.createdAt}
+          {moment(payment_mode.createdAt).format('MMMM Do YYYY')}
         </span>
       </label>
       <div className='flex items-center justify-around w-full'>
@@ -60,7 +61,6 @@ const PaymentModeCard = ({ payment_mode }) => {
           Delete
         </button>
       </div>
-      
     </div>
   );
 };

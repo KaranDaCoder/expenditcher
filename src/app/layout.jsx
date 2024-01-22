@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         className={`${mulish.className} min-h-dvh justify-between container mx-auto select-none px-4 lg:px-8 flex flex-col bg-white`}>
         <AuthSessionProvider>
           <Navbar />
-          <div className='w-full min-h-[calc(100dvh-6rem)] overflow-x-hidden'>
+          <div className='w-full min-h-[calc(100dvh-8rem)] overflow-x-visible'>
             {children}
           </div>
           <Footer />

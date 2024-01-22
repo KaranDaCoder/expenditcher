@@ -1,12 +1,45 @@
 import AddExpenseForm from '@/components/add-expense/AddExpenseForm';
-import React from 'react'
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import { cookies } from 'next/headers';
 
-const AddExpense = () => {
+
+const getUserPaymentModes = async () => {
+  try {
+    const request = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/paymentmodes`,
+      {
+        method: 'GET',
+        cache: 'no-store',
+        redirect: 'follow',
+        headers: {
+          Cookie: cookies(),
+        },
+      }
+    );
+    if (request.ok) {
+      const resp = await request.json();
+      return resp;
+    } else {
+      throw new Error(request.error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const AddExpense = async () => {
+  const session = await getServerSession(authOptions);
+  if(!session) {
+    return <p>Oops .. Something went wrong!</p>
+  }
+  const {user: {_id}} = session;
+  const { all_payment_modes, results } = await getUserPaymentModes();
   return (
     <div className='bg-white w-full min-h-[100dvh] flex justify-center items-start mt-14'>
            <div className='w-full h-auto p-4 border rounded-lg shadow-lg lg:w-3/4'>
             <h2 className='w-full mb-4 text-2xl text-center uppercase text-slate-700'>add new expense</h2>
-           <AddExpenseForm/>
+           <AddExpenseForm all_payment_modes={all_payment_modes} owner_id={_id}/>
            </div>
     </div>
   );

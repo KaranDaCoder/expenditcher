@@ -57,7 +57,7 @@ const getUserExpensesByPaymentModeId = async (payment_mode_id) => {
     } else {
       request = await fetch(
         `${process.env.NEXTAUTH_URL}/api/expenses?payment_mode=${payment_mode_id}`,
-        { method: 'GET', cache: 'no-cache', headers: { Cookie: cookies() } }
+        { method: 'GET', cache: 'no-store', headers: { Cookie: cookies() } }
       );
     }
     if (request.ok) {

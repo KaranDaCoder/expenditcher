@@ -27,7 +27,7 @@ const PaymentModeCard = ({ payment_mode }) => {
         htmlFor='payment_mode_name'
         className='text-base font-bold text-slate-600'
       >
-        Name :
+        Name : {' '}
         <span className='text-base font-semibold'>
           {payment_mode.payment_mode_name}
         </span>
@@ -36,7 +36,7 @@ const PaymentModeCard = ({ payment_mode }) => {
         htmlFor='payment_mode_name'
         className='text-base font-bold text-slate-600'
       >
-        Type :
+        Type : {' '}
         <span className='text-base font-semibold'>
           {payment_mode.payment_mode_type}
         </span>
@@ -45,17 +45,17 @@ const PaymentModeCard = ({ payment_mode }) => {
         htmlFor='payment_mode_name'
         className='text-base font-bold text-slate-600'
       >
-        Added On :
+        Added On : {' '}
         <span className='text-base font-semibold'>
           {moment(payment_mode.createdAt).format('MMMM Do YYYY')}
         </span>
       </label>
       <div className='flex items-center justify-around w-full'>
-        <button className='w-1/5 py-1 tracking-wider text-white bg-green-700 rounded-lg'>
+        <button className='w-1/5 py-1 tracking-wider text-white transition-all duration-200 bg-green-700 rounded-lg hover:tracking-widest'>
           Edit
         </button>
         <button
-          className='w-1/5 py-1 tracking-wider text-white bg-red-900 rounded-lg'
+          className='w-1/5 py-1 tracking-wider text-white transition-all duration-200 bg-red-900 rounded-lg hover:tracking-widest'
           onClick={handlePaymentDelete}
         >
           Delete

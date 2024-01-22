@@ -6,7 +6,7 @@ import UserProfile from './UserProfile';
 const NavbarRight = ({user}) => {
  
   return (
-    <div className='w-1/2 h-full lg:flex-1'>
+    <div className='w-5/6 h-full lg:w-1/2'>
       <ul className='flex items-center w-full h-full border rounded-full shadow-md justify-evenly '>
         <Link href={'/dashboard'} className='flex lg:hidden'>
           <DashboardIcon />
@@ -17,7 +17,7 @@ const NavbarRight = ({user}) => {
 
         <Link
           href={'/dashboard'}
-          className='flex-col items-center justify-center hidden text-sm lg:flex hover:scale-105'
+          className='flex-col items-center justify-center hidden text-sm duration-200 lg:flex hover:scale-105'
         >
           <DashboardIcon />
           <span className='text-sm font-semibold capitalize text-slate-600'>
@@ -26,14 +26,14 @@ const NavbarRight = ({user}) => {
         </Link>
         <Link
           href={'/add-expense'}
-          className='flex-col items-center justify-center hidden lg:flex'
+          className='flex-col items-center justify-center hidden transition-all duration-200 lg:flex hover:scale-105'
         >
           <PlusIcon />
           <span className='text-sm font-semibold capitalize text-slate-600'>
             add expense
           </span>
         </Link>
-        <UserProfile userImage={user?.image}/>
+        <UserProfile userImage={user?.image} />
       </ul>
     </div>
   );

@@ -1,4 +1,9 @@
-import React from 'react'
+
+
+export const metadata = {
+  title: 'Expenditcher | Expenses',
+  description: 'Login to Expenditcher',
+};
 
 const getExpensesByPaymentId = async(payment_mode_id) => {
  try {

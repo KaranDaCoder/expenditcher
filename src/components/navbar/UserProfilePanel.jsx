@@ -4,7 +4,7 @@ import { SettingsIcon } from '../AllSvgs';
 import Link from 'next/link';
 import GoogleSignOut from './GoogleSignOut';
 
-const UserProfilePanel = () => {
+const UserProfilePanel = ({ setUserPanel }) => {
   return (
     <div className='relative flex items-end justify-end'>
       <div className='absolute top-0 h-40 bg-white border rounded-md shadow-md w-36 lg:right-0'>
@@ -12,17 +12,18 @@ const UserProfilePanel = () => {
           <Link
             href={'/manage'}
             className='flex items-center justify-center w-full gap-4'
+            onClick={() => setUserPanel(false)}
           >
             <SettingsIcon />
             <span className='text-base font-semibold capitalize text-slate-600'>
               manage
             </span>
           </Link>
-         <GoogleSignOut/>
+          <GoogleSignOut />
         </ul>
       </div>
     </div>
   );
-}
+};
 
 export default UserProfilePanel

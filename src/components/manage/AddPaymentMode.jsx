@@ -76,10 +76,10 @@ const AddPaymentMode = ({ owner_id }) => {
           </select>
         </label>
         <div className='flex items-center justify-around w-full'>
-          <button type='submit' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize bg-green-700 rounded-md'>
+          <button type='submit' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-green-700 rounded-md hover:tracking-widest'>
             Add
           </button>
-          <button type='reset' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize bg-red-900 rounded-md'>
+          <button type='reset' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-red-900 rounded-md hover:tracking-widest'>
             Cancel
           </button>
         </div>

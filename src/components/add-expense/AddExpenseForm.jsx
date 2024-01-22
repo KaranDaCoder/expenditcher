@@ -51,7 +51,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
       className='flex flex-col w-full h-full'
       onSubmit={handleCreateExpense}
     >
-      <div className='flex flex-col items-center w-full h-full lg:space-y-8'>
+      <div className='flex flex-col items-center w-full h-full gap-3 lg:space-y-2'>
         <div className='flex flex-col items-center justify-center w-full'>
           <p className='w-full text-base capitalize text-start lg:w-5/6 text-slate-600'>
             Expense Name:
@@ -110,7 +110,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
           </Link>
         </div>
 
-        <div className='flex flex-col flex-wrap justify-between w-full h-auto gap-4 lg:flex-row lg:w-5/6'>
+        <div className='flex flex-col flex-wrap justify-between w-full h-auto gap-4 mb-4 lg:mb-0 lg:flex-row lg:w-5/6'>
           <input
             type='number'
             name='amount'
@@ -143,7 +143,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
           <select
             name='status'
             id='status'
-            className='px-2 py-1 text-base border rounded-md outline-none lg:px-10'
+            className='px-2 py-1 text-base text-center border rounded-md outline-none'
             onChange={handleFormSubmission}
           >
             <option value='Completed' defaultValue={true}>
@@ -159,10 +159,10 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
           cols='10'
           rows='5'
           placeholder='description'
-          className='w-full px-2 mt-4 capitalize border rounded-lg outline-none lg:w-5/6'
+          className='w-full px-2 capitalize border rounded-lg outline-none lg:w-5/6'
           onChange={handleFormSubmission}
         />
-        <div className='flex items-center justify-around w-full'>
+        <div className='flex items-center justify-around w-full mt-4 lg:mt-0'>
           <button
             type='reset'
             className='px-6 py-1 text-base font-light text-white uppercase bg-red-600 rounded-md shadow-sm lg:py-2 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300'

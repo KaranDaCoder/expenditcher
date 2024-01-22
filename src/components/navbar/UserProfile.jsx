@@ -9,9 +9,7 @@ const UserProfile = ({ userImage }) => {
 
   return (
     <div className='' onMouseLeave={() => setUserPanel(!userPanel)}>
-      <div
-        className='relative flex items-center w-auto h-full gap-1 py-1 rounded-full cursor-pointer'
-      >
+      <div className='relative flex items-center w-auto h-full gap-1 py-1 transition-all duration-200 rounded-full cursor-pointer hover:scale-105'>
         <Image
           src={userImage}
           height={1920}
@@ -22,7 +20,7 @@ const UserProfile = ({ userImage }) => {
         />
         {userPanel ? <ArrowIconUp /> : <ArrowIconDown />}
       </div>
-      {userPanel && <UserProfilePanel />}
+      {userPanel && <UserProfilePanel setUserPanel={setUserPanel} />}
     </div>
   );
 };

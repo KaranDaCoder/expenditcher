@@ -4,6 +4,12 @@ import { authOptions } from '@/lib/auth';
 import Feature from '@/components/dashboard/Feature';
 import UserExpenseModes from '@/components/dashboard/UserExpenseModes';
 
+
+export const metadata = {
+  title: 'Expenditcher | Dashboard',
+  description: 'Login to Expenditcher',
+};
+
 const UserDashboardPage = async () => {
   const session = await getServerSession(authOptions);
   if(!session) {

@@ -3,6 +3,11 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { cookies } from 'next/headers';
 
+export const metadata = {
+  title: 'Expenditcher | Add New Expense',
+  description: 'Add New Expense',
+};
+
 
 const getUserPaymentModes = async () => {
   try {
@@ -37,7 +42,7 @@ const AddExpense = async () => {
   const { all_payment_modes, results } = await getUserPaymentModes();
   return (
     <div className='bg-white w-full min-h-[100dvh] flex justify-center items-start mt-14'>
-           <div className='w-full h-auto p-4 border rounded-lg shadow-lg lg:w-3/4'>
+           <div className='w-full h-full p-4 border shadow-xl rounded-2xl lg:w-3/4'>
             <h2 className='w-full mb-4 text-2xl text-center uppercase text-slate-700'>add new expense</h2>
            <AddExpenseForm all_payment_modes={all_payment_modes} owner_id={_id}/>
            </div>

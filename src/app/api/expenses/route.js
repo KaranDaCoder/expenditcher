@@ -3,6 +3,7 @@ import Expense from '@/models/Expense';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { authOptions } from '@/lib/auth';
+import PaymentMode from '@/models/PaymentMode';
 
 export const GET = async (request, { params }) => {
   await connectDb();
@@ -75,6 +76,11 @@ export const POST = async (request, { params }) => {
         JSON.stringify({ error: 'Not Authorized to POST Expenese' }),
         { status: 401 }
       );
+    }
+
+    const isPaymentModeExist = await PaymentMode.findById(payment_mode);
+    if(isPaymentModeExist?.owner_id.toString() !== _id.toString()) {
+      return new NextResponse(JSON.stringify({error : `Payment Mode Not Found, try again after adding payment mode`}), {status : 401})
     }
     const create_new_expenses = await Expense.create({
       name,

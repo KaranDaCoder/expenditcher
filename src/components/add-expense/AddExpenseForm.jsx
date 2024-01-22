@@ -137,7 +137,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
             id='state'
             maxLength={2}
             placeholder='State'
-            className='px-2 py-1 text-base uppercase border rounded-md outline-none placeholder:capitalize'
+            className='px-1 py-1 text-base uppercase border rounded-md outline-none placeholder:capitalize'
             onChange={handleFormSubmission}
           />
           <select

@@ -11,7 +11,7 @@ const NavbarRight = ({user}) => {
         <Link href={'/dashboard'} className='flex lg:hidden'>
           <DashboardIcon />
         </Link>
-        <Link href={'/'} className='flex lg:hidden'>
+        <Link href={'/add-expense'} className='flex lg:hidden'>
           <PlusIcon />
         </Link>
 
@@ -25,7 +25,7 @@ const NavbarRight = ({user}) => {
           </span>
         </Link>
         <Link
-          href={'/'}
+          href={'/add-expense'}
           className='flex-col items-center justify-center hidden lg:flex'
         >
           <PlusIcon />

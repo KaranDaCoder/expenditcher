@@ -13,7 +13,7 @@ const Feature = async ({ user }) => {
       <div className='flex flex-col flex-wrap items-start justify-start w-full h-full gap-4 px-2 py-10 space-y-2'>
         <h2 className='mr-2 text-4xl font-light lg:text-7xl text-slate-600'>
           Welcome,
-          <span className='ml-1 text-3xl font-bold tracking-wide lg:text-6xl'>
+          <span className='ml-1 text-3xl font-bold tracking-wide capitalize lg:text-6xl'>
             {user.name}.
           </span>
         </h2>

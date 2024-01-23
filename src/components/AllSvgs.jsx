@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const HamburgerIcon = () => {
   return (
@@ -17,26 +17,26 @@ const HamburgerIcon = () => {
       />
     </svg>
   );
-}
+};
 
 const ArrowIconDown = () => {
- return (
-   <svg
-     xmlns='http://www.w3.org/2000/svg'
-     fill='none'
-     viewBox='0 0 24 24'
-     strokeWidth={2.5}
-     stroke='currentColor'
-     className='w-4 h-4'
-   >
-     <path
-       strokeLinecap='round'
-       strokeLinejoin='round'
-       d='m19.5 8.25-7.5 7.5-7.5-7.5'
-     />
-   </svg>
- );
-}
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth={2.5}
+      stroke='currentColor'
+      className='w-4 h-4'
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='m19.5 8.25-7.5 7.5-7.5-7.5'
+      />
+    </svg>
+  );
+};
 
 const ArrowIconUp = () => {
   return (
@@ -55,26 +55,26 @@ const ArrowIconUp = () => {
       />
     </svg>
   );
-}
+};
 
 const PlusIcon = () => {
- return (
-   <svg
-     xmlns='http://www.w3.org/2000/svg'
-     fill='gray'
-     viewBox='0 0 24 24'
-     strokeWidth={2.2}
-     stroke='gray'
-     className='w-5 h-5 lg:w-7 lg:h-7'
-   >
-     <path
-       strokeLinecap='round'
-       strokeLinejoin='round'
-       d='M12 4.5v15m7.5-7.5h-15'
-     />
-   </svg>
- );
-}
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='gray'
+      viewBox='0 0 24 24'
+      strokeWidth={2.2}
+      stroke='gray'
+      className='w-5 h-5 lg:w-7 lg:h-7'
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M12 4.5v15m7.5-7.5h-15'
+      />
+    </svg>
+  );
+};
 
 const DeleteIcon = () => {
   return (
@@ -82,9 +82,9 @@ const DeleteIcon = () => {
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
       viewBox='0 0 24 24'
-      strokeWidth={1.5}
+      strokeWidth={1.8}
       stroke='red'
-      className='w-6 h-6'
+      className='w-5 h-5'
     >
       <path
         strokeLinecap='round'
@@ -93,7 +93,7 @@ const DeleteIcon = () => {
       />
     </svg>
   );
-}
+};
 
 const DashboardIcon = () => {
   return (
@@ -112,7 +112,7 @@ const DashboardIcon = () => {
       />
     </svg>
   );
-}
+};
 
 const SettingsIcon = () => {
   return (
@@ -136,7 +136,7 @@ const SettingsIcon = () => {
       />
     </svg>
   );
-}
+};
 
 const LogoutIcon = () => {
   return (
@@ -155,7 +155,7 @@ const LogoutIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export {
   HamburgerIcon,

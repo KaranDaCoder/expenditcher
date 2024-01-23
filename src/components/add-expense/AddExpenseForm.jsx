@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { categories_array } from '@/lib/categoryList';
 import Link from 'next/link';
 
-const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
+const AddExpenseForm = ({ all_payment_modes, owner_id }) => {
   const [expenseDate, setExpenseDate] = useState(new Date());
   const router = useRouter();
   const [expenseObject, setExpenseObject] = useState({
@@ -18,49 +18,54 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
     payment_mode: all_payment_modes[0]._id,
     status: 'Completed',
     desc: '',
-    owner_id
+    owner_id,
   });
 
-  
   const handleFormSubmission = async (e) => {
-      e.preventDefault();
-      setExpenseObject(prev => ({
-        ...prev,
-        [e.target.name] : e.target.value
-      }))
-  }
+    e.preventDefault();
+    setExpenseObject((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleFormCancelation = (e) => {
-    e.preventDefault()
-    router.push('/dashboard')
-  }
-  const handleCreateExpense = async(e) => {
+    e.preventDefault();
+    router.push('/dashboard');
+  };
+  const handleCreateExpense = async (e) => {
     e.preventDefault();
     const createExpenseObject = {
       ...expenseObject,
-      date : expenseDate
-    }
-    const request = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses` , {method: 'POST' , cache: 'no-store' , body: JSON.stringify(createExpenseObject)});
-    if(request.ok) {
-
+      date: expenseDate,
+    };
+    const request = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses`,
+      {
+        method: 'POST',
+        cache: 'no-store',
+        body: JSON.stringify(createExpenseObject),
+      }
+    );
+    if (request.ok) {
       const resp = await request.json();
-       alert(`Expense Added Successfully!`);
+      alert(`Expense Added Successfully!`);
       router.refresh();
     }
     console.log(`Create New Expense With`, JSON.stringify(createExpenseObject));
-    console.log(`Reset from!@`)
-     setExpenseObject({
-       name: '',
-       category: 'Other',
-       amount: '',
-       date: new Date(),
-       state: '',
-       payment_mode: all_payment_modes[0]._id,
-       status: 'Completed',
-       desc: '',
-       owner_id,
-     });
-  }
+    console.log(`Reset from!@`);
+    setExpenseObject({
+      name: '',
+      category: 'Other',
+      amount: '',
+      date: new Date(),
+      state: '',
+      payment_mode: all_payment_modes[0]._id,
+      status: 'Completed',
+      desc: '',
+      owner_id,
+    });
+  };
 
   return (
     <form
@@ -187,14 +192,13 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
         <div className='flex items-center justify-around w-full mt-4 lg:mt-0'>
           <button
             type='reset'
-            className='w-1/4 px-6 py-1 text-base font-light text-white uppercase transition-all duration-300 rounded-md hover:shadow-md hover:font-semibold bg-amber-900 lg:py-2 hover:bg-red-700 hover:tracking-widest'
+            className='px-6 py-1 text-base font-light text-white uppercase transition-all duration-300 rounded-md lg:w-1/4 hover:shadow-md hover:font-semibold bg-amber-900 lg:py-2 hover:bg-red-700 hover:tracking-widest'
             onClick={handleFormCancelation}
-           
           >
             Cancel
           </button>
           <button
-            className='w-1/4 px-6 py-1 text-base font-light tracking-wider text-white uppercase bg-green-800 rounded-md shadow-sm lg:py-2 hover:bg-green-700 focus:outline-none'
+            className='px-6 py-1 text-base font-light tracking-wider text-white uppercase bg-green-800 rounded-md shadow-sm lg:w-1/4 lg:py-2 hover:bg-green-700 focus:outline-none'
             type='submit'
           >
             Submit

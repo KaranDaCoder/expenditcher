@@ -14,7 +14,8 @@ const ExpenseList = ({ all_expenses }) => {
           desc={expense?.desc}
           amount={expense?.amount}
           category={expense?.category}
-          payment_mode_name={expense?.payment_mode.payment_mode_name}
+          payment_mode_name={expense?.payment_mode?.payment_mode_name}
+          expense_id={expense?._id}
         />
       ))}
     </div>

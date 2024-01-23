@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import PaymentMode from '@/models/PaymentMode';
 import { NextResponse } from 'next/server';
+import Expense from '@/models/Expense';
 
 export const GET = async (request, { params }) => {
   await connectDb();
@@ -60,11 +61,18 @@ export const DELETE = async (request, { params }) => {
         { status: 401 }
       );
     }
+
+    const expensesWithPaymentMode = await Expense.deleteMany({
+      payment_mode: payment_mode_id,
+    });
+
     const paymentModeToDelete = await PaymentMode.findByIdAndDelete(
       payment_mode_id
     );
     return new NextResponse(
-      JSON.stringify(`Successfully Deleted the payment`),
+      JSON.stringify(
+        `Successfully Deleted the payment and associated Expenses with the Account!`
+      ),
       { status: 201 }
     );
   } catch (error) {

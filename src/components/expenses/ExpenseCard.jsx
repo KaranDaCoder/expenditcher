@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import moment from 'moment';
-import { ArrowIconDown, ArrowIconUp } from '../AllSvgs';
+import { ArrowIconDown, ArrowIconUp, DeleteIcon } from '../AllSvgs';
+import { useRouter } from 'next/navigation';
 
 const { format } = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -17,12 +18,34 @@ const ExpenseCard = ({
   amount,
   category,
   payment_mode_name,
+  expense_id,
 }) => {
   const [detailModal, setDetailModal] = useState(false);
+  const router = useRouter();
+
+  const handleDeleteExpense = async (e) => {
+    e.preventDefault();
+    try {
+      const request = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses/${expense_id}`,
+        { method: 'DELETE', cache: 'no-store' }
+      );
+      if (request.ok) {
+        router.refresh();
+        const resp = await request.json();
+        return resp;
+      } else {
+        throw new Error(request.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className='flex flex-col items-start justify-start w-full h-auto transition-all duration-300 bg-white border rounded-lg shadow-md select-none'>
+    <div className='flex flex-col items-start justify-start w-full h-auto transition-all duration-300 bg-white border rounded-lg shadow-md select-none hover:scale-105'>
       <div
-        className='flex items-start w-full h-auto p-2 cursor-pointer justify-evenly'
+        className='flex items-start w-full h-auto p-2 cursor-pointer justify-evenly '
         onClick={() => setDetailModal(!detailModal)}
       >
         <div className='flex flex-col items-start justify-start w-1/2 h-full gap-1 lg:w-1/2'>
@@ -67,15 +90,22 @@ const ExpenseCard = ({
             <p className='text-sm font-bold text-slate-900'>
               Description :{' '}
               <span className='text-sm font-semibold text-slate-600'>
-                {desc}
+                {desc
+                  ? desc
+                  : 'No description provided. You can still edit this transaction.'}
               </span>
             </p>
             <p className='text-sm font-bold text-slate-900'>
               Payment Account :{' '}
               <span className='text-sm font-semibold text-slate-600'>
-                Apple Card Ending 55344
+                {payment_mode_name}
               </span>
             </p>
+            <div className='flex items-end justify-end w-full'>
+              <p className='cursor-pointer w-fit' onClick={handleDeleteExpense}>
+                <DeleteIcon />
+              </p>
+            </div>
           </div>
         </div>
       )}

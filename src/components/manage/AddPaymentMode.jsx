@@ -14,7 +14,11 @@ const AddPaymentMode = ({ owner_id }) => {
     try {
       const request = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/paymentmodes`,
-        { method: 'POST', cache: 'no-store', body: JSON.stringify(paymentObject) }
+        {
+          method: 'POST',
+          cache: 'no-store',
+          body: JSON.stringify(paymentObject),
+        }
       );
       if (request.ok) {
         router.refresh();
@@ -76,10 +80,16 @@ const AddPaymentMode = ({ owner_id }) => {
           </select>
         </label>
         <div className='flex items-center justify-around w-full'>
-          <button type='submit' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-green-700 rounded-md hover:tracking-widest'>
+          <button
+            type='submit'
+            className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-green-700 rounded-md hover:tracking-widest'
+          >
             Add
           </button>
-          <button type='reset' className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-red-900 rounded-md hover:tracking-widest'>
+          <button
+            type='reset'
+            className='w-1/5 py-1 text-lg tracking-wider text-white capitalize transition-all duration-300 bg-red-900 rounded-md hover:tracking-widest'
+          >
             Cancel
           </button>
         </div>

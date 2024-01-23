@@ -40,14 +40,14 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
       ...expenseObject,
       date : expenseDate
     }
-    // const request = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses` , {method: 'POST' , cache: 'no-store' , body: JSON.stringify(createExpenseObject)});
-    // if(request.ok) {
+    const request = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses` , {method: 'POST' , cache: 'no-store' , body: JSON.stringify(createExpenseObject)});
+    if(request.ok) {
 
-    //   const resp = await request.json();
-    //    alert(`Expense Added Successfully!`);
-    //   router.refresh();
-    // }
-    // console.log(`Create New Expense With`, JSON.stringify(createExpenseObject));
+      const resp = await request.json();
+       alert(`Expense Added Successfully!`);
+      router.refresh();
+    }
+    console.log(`Create New Expense With`, JSON.stringify(createExpenseObject));
     console.log(`Reset from!@`)
      setExpenseObject({
        name: '',

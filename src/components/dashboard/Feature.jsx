@@ -10,13 +10,13 @@ const Feature = async ({ user }) => {
   const { expense_total } = await getUserExpensesByPaymentModeId('all');
   return (
     <div className='w-full h-auto py-2 mt-5 bg-white border shadow-lg rounded-xl'>
-      <div className='flex flex-col flex-wrap items-start justify-start w-full h-full gap-4 px-2 py-10 space-y-2'>
-        <h2 className='mr-2 text-4xl font-light lg:text-7xl text-slate-600'>
+      <div className='flex flex-col flex-wrap items-start justify-start w-full h-full gap-4 px-2 py-8'>
+        <h1 className='text-3xl font-light capitalize lg:text-7xl text-slate-600'>
           Welcome,
-          <span className='ml-1 text-3xl font-bold tracking-wide capitalize lg:text-6xl'>
+          <span className='font-semibold tracking-wide'>
             {user.name}.
           </span>
-        </h2>
+        </h1>
         <h2 className='px-2 text-xl capitalize lg:text-2xl text-slate-600'>
           You have spent{' '}
           <span className='font-bold tracking-widest'>

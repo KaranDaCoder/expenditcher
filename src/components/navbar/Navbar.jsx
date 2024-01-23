@@ -9,7 +9,7 @@ const Navbar = async () => {
  const session = await getServerSession(authOptions);
 
   return (
-    <div className='sticky top-0 w-full h-16 py-2 bg-white lg:h-20'>
+    <div className='sticky top-0 z-20 w-full h-16 py-2 bg-white lg:h-20'>
       <div className='flex items-center justify-between w-full h-full gap-4 lg:gap-2'>
         <Link
           href={'/'}

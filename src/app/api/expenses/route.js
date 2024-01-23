@@ -24,11 +24,11 @@ export const GET = async (request, { params }) => {
     } = session;
     if (!payment_mode || payment_mode === 'all') {
       all_expenses = await Expense.find({ owner_id: _id.toString() })
-        .populate({ path: 'payment_mode' })
+        .populate('payment_mode')
         .sort({ date: -1 });
     } else {
       all_expenses = await Expense.find({ payment_mode: payment_mode, owner_id:_id.toString() })
-        .populate({ path: 'payment_mode' })
+        .populate('payment_mode')
         .sort({ date: -1 });
     }
     let expense_total = all_expenses.reduce(function (prev, curr) {

@@ -4,6 +4,39 @@ import { authOptions } from '@/lib/auth';
 import PaymentMode from '@/models/PaymentMode';
 import { NextResponse } from 'next/server';
 
+export const GET = async (request, { params }) => {
+  await connectDb();
+  const { payment_mode_id } = params;
+  const session = await getServerSession(authOptions);
+  try {
+    if (!session) {
+      return new NextResponse(
+        JSON.stringify({ error: `Unauthorized to view the payment mode` }),
+        { status: 401 }
+      );
+    }
+    const {
+      user: { _id },
+    } = session;
+    const paymentModeExist = await PaymentMode.findOne({ owner_id: _id });
+    if (!paymentModeExist) {
+      return new NextResponse(
+        JSON.stringify({
+          error: `Not Authorized ! ${payment_mode_id} does not belong to the user!`,
+        }),
+        { status: 401 }
+      );
+    }
+    const payment_mode = await PaymentMode.findById(payment_mode_id);
+    return new NextResponse(JSON.stringify(payment_mode), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new NextResponse(
+      JSON.stringify({ error: 'Something went wrong!' }),
+      { status: 500 }
+    );
+  }
+};
 export const DELETE = async (request, { params }) => {
   await connectDb();
   const { payment_mode_id } = params;
@@ -18,14 +51,26 @@ export const DELETE = async (request, { params }) => {
     );
   }
   try {
-   const paymentModeExist = await PaymentMode.findOne({owner_id : _id});
-   if(!paymentModeExist) {
-    return new NextResponse(JSON.stringify({error : `Not Authorized ! ${payment_mode_id} does not belong to the user!`}) , {status:401})
-   }
-   const paymentModeToDelete = await PaymentMode.findByIdAndDelete(payment_mode_id);
-   return new NextResponse(JSON.stringify(`Successfully Deleted the payment`), {status:201})
+    const paymentModeExist = await PaymentMode.findOne({ owner_id: _id });
+    if (!paymentModeExist) {
+      return new NextResponse(
+        JSON.stringify({
+          error: `Not Authorized ! ${payment_mode_id} does not belong to the user!`,
+        }),
+        { status: 401 }
+      );
+    }
+    const paymentModeToDelete = await PaymentMode.findByIdAndDelete(
+      payment_mode_id
+    );
+    return new NextResponse(
+      JSON.stringify(`Successfully Deleted the payment`),
+      { status: 201 }
+    );
   } catch (error) {
-   console.log(error)
-   return new NextResponse(JSON.stringify(`Something went wrong`) , {status:500})
+    console.log(error);
+    return new NextResponse(JSON.stringify(`Something went wrong`), {
+      status: 500,
+    });
   }
 };

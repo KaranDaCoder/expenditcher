@@ -33,7 +33,7 @@ const NavbarRight = ({user}) => {
             add expense
           </span>
         </Link>
-        <UserProfile userImage={user?.image} />
+        <UserProfile userImage={user.image ? user?.image : './avatarDef.png'} />
       </ul>
     </div>
   );

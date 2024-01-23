@@ -10,14 +10,14 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
   const [expenseDate, setExpenseDate] = useState(new Date());
   const router = useRouter();
   const [expenseObject, setExpenseObject] = useState({
-    name: null,
+    name: '',
     category: 'Other',
-    amount: null,
+    amount: '',
     date: expenseDate,
-    state: null,
-    payment_mode: all_payment_modes[0]._id || null,
+    state: '',
+    payment_mode: all_payment_modes[0]._id,
     status: 'Completed',
-    desc: null,
+    desc: '',
     owner_id
   });
 
@@ -30,20 +30,36 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
       }))
   }
 
+  const handleFormCancelation = (e) => {
+    e.preventDefault()
+    router.push('/dashboard')
+  }
   const handleCreateExpense = async(e) => {
     e.preventDefault();
     const createExpenseObject = {
       ...expenseObject,
       date : expenseDate
     }
-    const request = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses` , {method: 'POST' , cache: 'no-store' , body: JSON.stringify(createExpenseObject)});
-    if(request.ok) {
+    // const request = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/expenses` , {method: 'POST' , cache: 'no-store' , body: JSON.stringify(createExpenseObject)});
+    // if(request.ok) {
 
-      const resp = await request.json();
-       alert(`Expense Added Successfully!`);
-      router.refresh();
-    }
-    console.log(`Create New Expense With`, JSON.stringify(createExpenseObject));
+    //   const resp = await request.json();
+    //    alert(`Expense Added Successfully!`);
+    //   router.refresh();
+    // }
+    // console.log(`Create New Expense With`, JSON.stringify(createExpenseObject));
+    console.log(`Reset from!@`)
+     setExpenseObject({
+       name: '',
+       category: 'Other',
+       amount: '',
+       date: new Date(),
+       state: '',
+       payment_mode: all_payment_modes[0]._id,
+       status: 'Completed',
+       desc: '',
+       owner_id,
+     });
   }
 
   return (
@@ -64,6 +80,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
             minLength='5'
             maxLength='60'
             required
+            value={expenseObject.name}
             onChange={handleFormSubmission}
           />
         </div>
@@ -93,6 +110,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
           <select
             name='payment_mode'
             id='payment_mode'
+            value={expenseObject.payment_mode}
             className='relative w-full py-1 text-base font-semibold text-center border rounded-md outline-none lg:w-5/6 text-slate-600'
             onChange={handleFormSubmission}
           >
@@ -123,6 +141,7 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
             max={9999999}
             step='any'
             required={true}
+            value={expenseObject.amount}
             onChange={handleFormSubmission}
           />
           <DatePicker
@@ -138,12 +157,14 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
             maxLength={2}
             placeholder='State'
             className='px-1 py-1 text-base uppercase border rounded-md outline-none placeholder:capitalize'
+            value={expenseObject.state}
             onChange={handleFormSubmission}
           />
           <select
             name='status'
             id='status'
             className='px-2 py-1 text-base text-center border rounded-md outline-none'
+            value={expenseObject.status}
             onChange={handleFormSubmission}
           >
             <option value='Completed' defaultValue={true}>
@@ -160,17 +181,20 @@ const AddExpenseForm = ({ all_payment_modes , owner_id }) => {
           rows='5'
           placeholder='description'
           className='w-full px-2 capitalize border rounded-lg outline-none lg:w-5/6'
+          value={expenseObject.desc}
           onChange={handleFormSubmission}
         />
         <div className='flex items-center justify-around w-full mt-4 lg:mt-0'>
           <button
             type='reset'
-            className='px-6 py-1 text-base font-light text-white uppercase bg-red-600 rounded-md shadow-sm lg:py-2 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300'
+            className='w-1/4 px-6 py-1 text-base font-light text-white uppercase transition-all duration-300 rounded-md hover:shadow-md hover:font-semibold bg-amber-900 lg:py-2 hover:bg-red-700 hover:tracking-widest'
+            onClick={handleFormCancelation}
+           
           >
             Cancel
           </button>
           <button
-            className='px-6 py-1 text-base font-light text-white uppercase bg-green-800 rounded-md shadow-sm lg:py-2 tracking-widere hover:bg-green-700 focus:outline-none'
+            className='w-1/4 px-6 py-1 text-base font-light tracking-wider text-white uppercase bg-green-800 rounded-md shadow-sm lg:py-2 hover:bg-green-700 focus:outline-none'
             type='submit'
           >
             Submit

@@ -19,11 +19,11 @@ const Feature = async ({ user }) => {
         </h2>
         <h2 className='px-2 text-xl capitalize lg:text-2xl text-slate-600'>
           You have spent{' '}
-          <span className='font-bold'>{format(expense_total)}</span>
-          <span>{' '}as of today, {' '}</span>
-          <span className='font-bold'>
-            {moment().format('MMMM Do YYYY')}.
+          <span className='font-bold tracking-widest'>
+            {format(expense_total)}
           </span>
+          <span> as of today, </span>
+          <span className='font-bold'>{moment().format('MMMM Do YYYY')}.</span>
         </h2>
         <Link
           href={'/expenses?payment_mode=all'}

@@ -23,7 +23,7 @@ const SearchFilterSort = () => {
         type='search'
         name='search'
         id='search'
-        className='w-full h-full px-2 border rounded-lg outline-none text-slate-600'
+        className='w-full h-full px-2 bg-transparent border rounded-lg outline-none text-slate-600 focus:ring-1 ring-green-800'
         placeholder='Search By Name or Description'
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get('search')?.toString()}

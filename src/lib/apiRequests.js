@@ -96,7 +96,10 @@ const getUserExpensesByPaymentModeId = async (
               .toString()
               .toLowerCase()
               .includes(searchParams.toString().toLowerCase())
-          ) {
+           || exp.desc
+              .toString()
+              .toLowerCase()
+              .includes(searchParams.toString().toLowerCase())) {
             return exp;
           }
         });

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { ArrowIconDown, ArrowIconUp, DeleteIcon } from '../AllSvgs';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+
 
 const { format } = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -31,6 +33,20 @@ const ExpenseCard = ({
         { method: 'DELETE', cache: 'no-store' }
       );
       if (request.ok) {
+         toast.success(`Expense Deleted!`, {
+           style: {
+             border: '1px solid #713200',
+             padding: '10px',
+             background: 'green',
+             borderRadius: '10px',
+             color: 'white',
+           },
+           iconTheme: {
+             primary: 'white',
+             secondary: 'green',
+           },
+           duration: 1000,
+         });
         router.refresh();
         const resp = await request.json();
         return resp;

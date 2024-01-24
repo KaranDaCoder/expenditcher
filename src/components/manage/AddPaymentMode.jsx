@@ -1,6 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+
+
+
 const AddPaymentMode = ({ owner_id }) => {
   const router = useRouter();
   const [paymentObject, setPaymentObject] = useState({
@@ -21,10 +25,37 @@ const AddPaymentMode = ({ owner_id }) => {
         }
       );
       if (request.ok) {
+         toast.success(`${paymentObject.payment_mode_name} succesfully created!`, {
+           style: {
+             border: '1px solid #713200',
+             padding: '10px',
+             background: 'green',
+             borderRadius: '10px',
+             color: 'white',
+           },
+           iconTheme: {
+             primary: 'white',
+             secondary: 'green',
+           },
+           duration: 1000,
+         });
         router.refresh();
         const resp = await request.json();
         return resp;
       } else {
+         toast.error(`${paymentObject?.payment_mode_name} already exists!`, {
+           style: {
+             padding: '10px',
+             background: 'red',
+             borderRadius: '10px',
+             color: 'white',
+           },
+           iconTheme: {
+             primary: 'red',
+             secondary: 'white',
+           },
+           duration: 1000,
+         });
         throw new Error(request.error);
       }
     } catch (error) {

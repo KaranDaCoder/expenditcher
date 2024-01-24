@@ -1,6 +1,7 @@
 'use client';
 import moment from 'moment';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const PaymentModeCard = ({ payment_mode }) => {
   const router = useRouter();
@@ -12,6 +13,20 @@ const PaymentModeCard = ({ payment_mode }) => {
       );
       if (request.ok) {
         const resp = await request.json();
+        toast.success(`Expense has been deleted!`, {
+          style: {
+            border: '1px solid #713200',
+            padding: '10px',
+            background: 'green',
+            borderRadius: '10px',
+            color: 'white',
+          },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'green',
+          },
+          duration: 1000,
+        });
         router.refresh();
         return resp;
       } else {

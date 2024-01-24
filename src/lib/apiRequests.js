@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
 
-
 const fetchLoggedInUserDetails = async (user_id) => {
   try {
     const request = await fetch(
@@ -17,10 +16,6 @@ const fetchLoggedInUserDetails = async (user_id) => {
     console.log(error);
   }
 };
-
-
-
-
 
 // PAYMENT-MODES
 const getUserPaymentModes = async () => {
@@ -47,7 +42,7 @@ const getUserPaymentModes = async () => {
   }
 };
 
-//SINGLE PAYMENT MODE 
+//SINGLE PAYMENT MODE
 const getSinglePaymentMode = async (payment_mode_id) => {
   try {
     const request = await fetch(
@@ -72,10 +67,10 @@ const getSinglePaymentMode = async (payment_mode_id) => {
   }
 };
 
-
-
-
-const getUserExpensesByPaymentModeId = async (payment_mode_id) => {
+const getUserExpensesByPaymentModeId = async (
+  payment_mode_id,
+  searchParams
+) => {
   let request = '';
   try {
     if (payment_mode_id === 'all' || !payment_mode_id) {
@@ -89,9 +84,28 @@ const getUserExpensesByPaymentModeId = async (payment_mode_id) => {
         { method: 'GET', cache: 'no-store', headers: { Cookie: cookies() } }
       );
     }
+
     if (request.ok) {
       const resp = await request.json();
-      return resp;
+      if (!searchParams) {
+        return resp;
+      } else {
+        const data = resp.all_expenses.filter((exp) => {
+          if (
+            exp.name
+              .toString()
+              .toLowerCase()
+              .includes(searchParams.toString().toLowerCase())
+          ) {
+            return exp;
+          }
+        });
+        return {
+          all_expenses: data,
+          expense_total: resp.expense_total,
+          results: resp.results,
+        };
+      }
     } else {
       throw new Error(request.error);
     }
@@ -100,5 +114,9 @@ const getUserExpensesByPaymentModeId = async (payment_mode_id) => {
   }
 };
 
-
-export {fetchLoggedInUserDetails, getUserPaymentModes, getSinglePaymentMode, getUserExpensesByPaymentModeId };
+export {
+  fetchLoggedInUserDetails,
+  getUserPaymentModes,
+  getSinglePaymentMode,
+  getUserExpensesByPaymentModeId,
+};

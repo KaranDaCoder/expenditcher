@@ -14,7 +14,8 @@ export const metadata = {
 
 const ExpensesPage = async({searchParams}) => {
    const { all_expenses , expense_total , results} = await getUserExpensesByPaymentModeId(
-     searchParams?.payment_mode
+     searchParams?.payment_mode,
+     searchParams?.search
    );
    let paymentModeDetails; 
    if (searchParams?.payment_mode !== 'all') {

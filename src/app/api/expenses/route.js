@@ -10,7 +10,6 @@ export const GET = async (request, { params }) => {
   const session = await getServerSession(authOptions);
   const url = new URL(request.url);
   const payment_mode = url.searchParams?.get('payment_mode');
-  console.log(`paymentMode : `, payment_mode);
   let all_expenses;
   try {
     if (!session) {

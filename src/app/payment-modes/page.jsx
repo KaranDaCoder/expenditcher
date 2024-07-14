@@ -14,7 +14,9 @@ const PaymentModes = async () => {
   console.log(data);
   return (
     <main className='flex flex-col w-full h-full gap-4'>
+      <div className='w-full h-8'>
       <BreadCrumb link={'Dashboard'} activeLink={'Payment Modes'} />
+      </div>
       <div className='w-full mt-2'>
         <h1 className='text-xl font-semibold tracking-wider text-center uppercase lg:text-3xl'>Manage Payment Modes</h1>
       </div>

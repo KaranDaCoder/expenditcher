@@ -1,7 +1,9 @@
-import { Inter , Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const poppins = Poppins({
@@ -17,8 +19,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body className={`${poppins.className} select-none text-pretty subpixel-antialiased  text-slate-600 bg-slate-50 container mx-auto px-2 overflow-x-hidden `}>
         <Navbar/>
+      <ToastContainer />
         <main className="w-full lg:h-[calc(100dvh-8.5rem)] h-[calc(100dvh-5rem)] overflow-y-auto overflow-x-hidden flex flex-col gap-2" draggable='false'>
         {children}
         </main>

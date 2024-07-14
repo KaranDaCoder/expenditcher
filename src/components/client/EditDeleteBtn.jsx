@@ -6,7 +6,6 @@ const { useRouter } = require("next/navigation");
 
 const EditDeleteBtn = ({ payment_mode_id }) => {
   const [isEdit, setEdit] = useState(false);
-  console.log(isEdit)
   const router = useRouter();
   const handleDelete = async () => {
     try {

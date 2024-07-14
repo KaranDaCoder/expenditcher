@@ -19,7 +19,7 @@ const ExpensesList = async ({ searchParams }) => {
   }
   return (
     <div className='flex flex-col w-full h-full gap-4'>
-      <div className='h-8'>
+      <div className='w-full h-8'>
         <BreadCrumb link={'Dashboard'} activeLink1={searchParams?.status || (searchParams?.payment_mode_id && userPaymentMode?.result?.payment_mode_name) || searchParams?.category || 'All Expenses'} activeLink={'expenses'} />
         
       </div>

@@ -26,8 +26,8 @@ const Dashboard = async () => {
   const pendingExpenses = expensesByFilter(data, 'status', 'pending');
   const canceledExpenses = expensesByFilter(data, 'status', 'canceled');
   return (
-    <div className='flex flex-col w-full h-full gap-5 mb-4'>
-      <div className='h-8'>
+    <div className='flex flex-col w-full h-full gap-4'>
+      <div className='w-full h-8'>
         <BreadCrumb link={'Dashboard'} />
       </div>
       <div className='flex items-center justify-center'>

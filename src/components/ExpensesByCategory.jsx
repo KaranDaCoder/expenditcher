@@ -12,7 +12,7 @@ const ExpensesByCategory = ({ data }) => {
       <p className='w-full text-xs italic tracking-wide text-center lowercase'>(Includes Completed, Pending and Canceled Expenses)</p>
       <div className='flex flex-col items-start justify-start min-h-full px-10 py-4 space-y-4 capitalize'>
         {categories_array.map(async category => (
-          <div className='flex items-center justify-between w-full hover:font-semibold hover:text-slate-700'>
+          <div className='flex items-center justify-between w-full hover:font-semibold hover:text-slate-700' key={category?._id}>
             <Link href={`/expenses?category=${category?.name}`} className='flex items-center gap-2'>
               <p>{category?.icon}</p>
               <p>{category?.name}</p>

@@ -130,6 +130,20 @@ export const getUserPaymentMode = async (payment_mode_id) => {
   }
 };
 
+export const getUserInfo = async (user_id) => {
+  try {
+    const request = await fetch(`${process.env.AUTH_URL}/api/users/${user_id}`, {method: 'GET', cache: 'no-cache', credentials: 'same-origin', headers: {ContentType: 'application/json', cookie: cookies()}});
+    if(request.ok) {
+      const {result, count} = await request.json();
+      return {result, count};
+    } else {
+      throw new Error(request.error)
+    }
+  } catch (error) {
+    console.log(error )
+  }
+}
+
 export const { format } = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',

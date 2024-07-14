@@ -22,10 +22,10 @@ const NavbarMobile = () => {
       </span>
      </div>
      <div className='flex flex-col items-center justify-around h-3/4'>
-       <Link href={"/"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}> <span><DashboardIcon fontSize='large' color='success'/></span>  Dashboard</Link>
-       <Link href={"/"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}> <span><AddIcon fontSize='large' color='success'/></span>Add Expense</Link>
-      <Link href={"/"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}><span><CreditCardIcon fontSize='large' color='success' /></span>Payment Modes</Link>
-      <Link href={"/"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}><span><PersonIcon fontSize='large' color='success' /></span>My Profile</Link>
+       <Link href={"/dashboard"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}> <span><DashboardIcon fontSize='large' color='success'/></span>  Dashboard</Link>
+       <Link href={"/add-new-expense"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}> <span><AddIcon fontSize='large' color='success'/></span>Add Expense</Link>
+      <Link href={"/payment-modes"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}><span><CreditCardIcon fontSize='large' color='success' /></span>Payment Modes</Link>
+      <Link href={"/my-profile"} className='inline-flex items-center justify-center w-full gap-3 text-3xl text-center' onClick={() => setMobileNav(false)}><span><PersonIcon fontSize='large' color='success' /></span>My Profile</Link>
      </div>
      </div>}
     </div>

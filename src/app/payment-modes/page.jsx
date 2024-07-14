@@ -4,9 +4,7 @@ import BreadCrumb from '@/components/BreadCrumb'
 import EditDeleteBtn from '@/components/client/EditDeleteBtn'
 import { getUserPaymentModes } from '@/lib/apiRequests'
 import moment from 'moment'
-import { redirect } from 'next/dist/server/api-utils'
-import { cookies } from 'next/headers'
-import React from 'react'
+import { redirect } from 'next/navigation'
 
 const PaymentModes = async () => {
   const session = await auth();

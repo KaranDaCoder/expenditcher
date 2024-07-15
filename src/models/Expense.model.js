@@ -36,7 +36,7 @@ const ExpenseSchema = new Schema(
     payment_mode_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'PaymentMode',
-      requred: true,
+      required: true,
     },
     date: {
       type: Date,
@@ -52,6 +52,9 @@ const ExpenseSchema = new Schema(
      type : String,
      default: 'MN',
      max: 2
+    },
+    desc : {
+      type: String
     },
     owner_id: {
       type: mongoose.Schema.Types.ObjectId,

@@ -32,8 +32,8 @@ const ExpensesList = async ({ searchParams }) => {
           </div>
         </div>
         <Search/>
-      </div>
       <ExpenseList data={data}/>    
+      </div>
     </div>
   )
 }

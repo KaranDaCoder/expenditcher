@@ -18,9 +18,8 @@ const ExpensesByCategory = ({ data }) => {
               <p>{category?.name}</p>
             </Link>
             <p className=''>{(expensesByFilter(data, 'category', category?.name))?.count}</p>
-
           </div>
-          // <Link href={`/expenses?category=${category?.name.toString().toLowerCase()}`} className='inline-flex items-center justify-between w-full gap-5 text-lg hover:font-semibold hover:text-slate-700'> {category?.name} <span>{(expensesByFilter(data, 'category', category?.name))?.count}</span></Link>
+
         ))}
         <div className='w-full h-1 border bg-slate-500'></div>
         <h2 className='inline-flex justify-between w-full gap-5 text-lg'>Total<span>{data?.count}</span></h2>

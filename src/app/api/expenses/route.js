@@ -99,7 +99,8 @@ export const POST = async (request, response) => {
     date,
     status,
     state,
-    owner_id,
+    desc,
+    owner_id
   } = await request.json();
   const session = await auth();
   if (!session)
@@ -140,7 +141,8 @@ export const POST = async (request, response) => {
       date,
       status,
       state,
-      owner_id,
+      desc,
+      owner_id
     });
     await create_expense.save();
     return NextResponseWrapper({ success: `${name} added successfully` }, 201);

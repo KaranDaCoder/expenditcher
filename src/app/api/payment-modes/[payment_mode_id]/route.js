@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { NextResponseWrapper } from "@/lib/NextWrapperResponsesWrapper";
 import { connectDb } from "@/lib/dbConnect";
+import Expense from "@/models/Expense.model";
 import PaymentMode from "@/models/PaymentMode.model";
 import { NextResponse } from "next/server";
 

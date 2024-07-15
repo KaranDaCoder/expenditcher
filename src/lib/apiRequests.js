@@ -94,6 +94,26 @@ export const getFilteredExpenses = async (
   }
 };
 
+export const getExpenseDetails = async(expense_id) => {
+   let request;
+   try {
+     request = await fetch(`${process.env.AUTH_URL}/api/expenses/${expense_id}`, {
+       method: 'GET',
+       cache: 'no-cache',
+       credentials: 'same-origin',
+       headers: { ContentType: 'application/json', cookie: cookies() },
+     });
+
+     if (request.ok) {
+       const { result, count } = await request.json();
+       return { result, count };
+     } else {
+       throw new Error(request.error);
+     }
+   } catch (error) {
+     console.log(error);
+   }
+}
 export const getUserPaymentModes = async () => {
   try {
     const request = await fetch(`${process.env.AUTH_URL}/api/payment-modes`, {
@@ -145,6 +165,7 @@ export const getUserInfo = async (user_id) => {
     console.log(error )
   }
 }
+
 
 export const { format } = new Intl.NumberFormat('en-US', {
   style: 'currency',

@@ -25,7 +25,7 @@ const AddNewExpense = ({ owner_id, data }) => {
   payment_mode_id: data?.result[0]?._id,
   date: new Date(),
   status: 'completed',
-  description: '',
+  desc: '',
   owner_id: owner_id
  })
  const handleFormSubmission = async (e) => {
@@ -45,7 +45,7 @@ const AddNewExpense = ({ owner_id, data }) => {
    payment_mode_id: data?.result[0]?._id,
    date: new Date(),
    status: 'completed',
-   description: '',
+   desc: '',
    owner_id: owner_id
   }))
  }
@@ -53,13 +53,12 @@ const AddNewExpense = ({ owner_id, data }) => {
  const handleAddExpenseRequest = async (e) => {
   e.preventDefault();
   try {
+   console.log(expense)
    const request = await fetch(`/api/expenses`, { method: 'POST', cache: 'no-cache', redirect: 'follow', body: JSON.stringify(expense) });
    const response = await request.json();
    if (request.ok) {
     notify(response?.success);
     handleFormReset(e);
- 
-    console.log(response)
    } else {
     console.log(response)
     throw new Error(request.error);
@@ -99,7 +98,7 @@ const AddNewExpense = ({ owner_id, data }) => {
        type='text'
        name='name'
        id='name'
-       className='w-full h-10 px-2 text-center border rounded-md outline-none focus:border-green-600 placeholder:italic placeholder:capitalize'
+       className='w-full h-10 px-2 text-center border rounded-md outline-none focus:border-green-600 placeholder:italic placeholder:lowercase'
        placeholder='add expense name...'
        minLength='5'
        maxLength='40'
@@ -118,7 +117,7 @@ const AddNewExpense = ({ owner_id, data }) => {
        type='date'
        name='date'
        id='date'
-       className='flex items-center justify-center w-full h-10 text-sm text-center border rounded-md outline-none cursor-pointer lg:w-full'
+       className='flex items-center justify-around w-full h-10 text-sm text-center bg-white border rounded-md outline-none cursor-pointer'
        value={expense.date}
        onChange={handleFormSubmission}
       />
@@ -129,12 +128,12 @@ const AddNewExpense = ({ owner_id, data }) => {
       <select
        name='payment_mode_id'
        id='payment_mode_id'
-       className='w-full h-10 text-center capitalize border rounded-md outline-none cursor-pointer'
+       className='w-full h-10 text-center capitalize bg-white border rounded-md outline-none cursor-pointer'
        value={expense.payment_mode_id}
        onChange={handleFormSubmission}
       >
        {data?.result?.map(p_m => (
-        <option value={p_m._id} key={p_m._id}>{p_m.payment_mode_name}</option>
+        <option value={p_m._id} key={p_m._id} className='bg-white'>{p_m.payment_mode_name}</option>
        ))}
       </select>
      </div>
@@ -173,18 +172,18 @@ const AddNewExpense = ({ owner_id, data }) => {
        onChange={handleFormSubmission}
       />
      </div>
-     <div className='flex flex-col items-center justify-start min-w-40'>
+     <div className='flex flex-col items-center justify-start bg-white min-w-40'>
       <p className='hidden text-sm text-slate-500 lg:flex'>Status</p>
       <select
        name='status'
        id='status'
-       className='w-full h-10 text-center border rounded-lg outline-none cursor-pointer lg:min-w-72'
+       className='w-full h-10 text-center bg-white border rounded-lg outline-none cursor-pointer lg:min-w-72'
        value={expense.status}
        onChange={handleFormSubmission}
       >
-       <option value='completed'>Completed</option>
-       <option value="pending">Pending</option>
-       <option value="canceled">Canceled</option>
+       <option className='bg-white' value='completed'>Completed</option>
+       <option className='bg-white' value="pending">Pending</option>
+       <option className='bg-white' value="canceled">Canceled</option>
       </select>
 
      </div>
@@ -193,12 +192,12 @@ const AddNewExpense = ({ owner_id, data }) => {
     <div className='flex flex-col items-center justify-center w-full py-2 lg:py-0'>
      <p className='hidden text-sm text-slate-500 lg:flex'>Description</p>
      <textarea
-      name='description'
-      id='description'
+      name='desc'
+      id='desc'
       placeholder='description'
       rows={10}
       className='w-full px-2 text-sm border rounded-md outline-none resize-none focus:border-green-600 placeholder:italic placeholder:capitalize'
-      value={expense.description}
+      value={expense.desc}
       onChange={handleFormSubmission}
      />
     </div>

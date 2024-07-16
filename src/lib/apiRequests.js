@@ -77,9 +77,8 @@ export const getFilteredExpenses = async (
     const data = await request.json();
      //SEARCH
     if(search) {
-      console.log(`SEARCH IS TRUE!`)
       const searchBy = data?.result.filter((expense) =>
-        expense.name.toString().toLowerCase().includes(search)
+        expense.name.toString().toLowerCase().includes(search.toLowerCase()) || expense?.desc.toString().toLowerCase().includes(search.toLowerCase())
       );
        const expense_total =
          searchBy.reduce(function (prev, curr) {

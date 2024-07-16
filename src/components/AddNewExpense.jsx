@@ -82,13 +82,13 @@ const AddNewExpense = ({ owner_id, data }) => {
       <select
        name='category'
        id='category'
-       className='w-full h-10 font-semibold text-center border rounded-lg outline-none cursor-pointer'
+       className='w-full h-10 font-semibold text-center bg-white border rounded-lg outline-none cursor-pointer'
        value={expense.category}
        onChange={handleFormSubmission}
       >
        {/* <option value="Other Services" defaultValue={true}>Other Services</option> */}
        {categories_array?.map(cat => (
-        <option value={cat?.name} key={cat?.name} className='capitalize'>{cat?.name}</option>
+        <option value={cat?.name} key={cat?.name} className='capitalize bg-white'>{cat?.name}</option>
        ))}
       </select>
      </div>
@@ -111,7 +111,7 @@ const AddNewExpense = ({ owner_id, data }) => {
 
     </div>
     <div className='flex flex-col w-full gap-2 py-2 lg:flex-row lg:justify-around lg:py-0'>
-     <div className='flex flex-col items-center justify-center min-w-44'>
+     <div className='flex flex-col items-center justify-center w-full lg:w-48'>
       <p className='hidden text-sm text-slate-500 lg:flex'>Date</p>
       <input
        type='date'

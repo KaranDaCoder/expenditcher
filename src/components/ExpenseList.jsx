@@ -10,7 +10,7 @@ const { format } = new Intl.NumberFormat('en-US', {
 
 const ExpenseList = ({ data }) => {
   return (
-    <div className='w-full h-auto p-2'>
+    <div className='w-full h-auto lg:p-2'>
       {/* TABLE HEADERS */}
       {data?.count > 0 ? <table className='w-full table-fixed'>
         <thead className='text-white'>

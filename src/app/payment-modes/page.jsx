@@ -29,14 +29,14 @@ const PaymentModes = async () => {
       <h2 className='text-xl font-semibold tracking-wider text-center uppercase lg:text-2xl'>Your Payment Modes ({data?.count})</h2>
       <div className='w-full py-2 mb-1 overflow-x-auto min-h-56'>
         
-        <div className='relative flex items-center w-full h-full gap-4'>
+        <div className='flex items-center w-full h-full gap-4'>
           {data?.result?.map((p,index) => (
-              <div className='relative flex-none w-full h-full overflow-hidden bg-white border lg:w-1/3 rounded-2xl' key={p._id}>
+              <div className='flex-none w-full h-full overflow-hidden bg-white border lg:w-1/3 rounded-2xl' key={p._id}>
               <div className='flex items-center justify-between w-full gap-2 p-2'>
                 <h2 className='px-2 text-3xl font-semibold rounded-md text-slate-50 w-fit bg-slate-600'>{index + 1}.</h2>
                 <h2 className='w-full text-xl font-light text-center lg:text-2xl'>{p.payment_mode_name}</h2>
               </div>
-              <div className='relative flex flex-col items-center justify-center w-full gap-3'>
+              <div className='flex flex-col items-center justify-center w-full gap-3'>
                 <h2 className='w-full text-sm font-light text-center lg:text-lg'>{p.payment_mode_type}</h2>
                 <h2 className='text-sm italic font-light text-center'>Added on: {moment(p.createdAt).format('MMM Do YYYY')}</h2>
                 {p.payment_mode_type !== 'Cash' && <EditDeleteBtn payment_mode_id={p._id}/>}

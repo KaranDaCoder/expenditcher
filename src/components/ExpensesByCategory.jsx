@@ -15,9 +15,9 @@ const ExpensesByCategory = ({ data }) => {
           <div className='flex items-center justify-between w-full hover:font-semibold hover:text-slate-700' key={category?._id}>
             <Link href={`/expenses?category=${category?.name}`} className='flex items-center gap-2'>
               <p>{category?.icon}</p>
-              <p>{category?.name}</p>
+              <p className='text-sm lg:text-base'>{category?.name}</p>
             </Link>
-            <p className=''>{(expensesByFilter(data, 'category', category?.name))?.count}</p>
+            <p className='text-sm lg:text-base'>{(expensesByFilter(data, 'category', category?.name))?.count}</p>
           </div>
 
         ))}

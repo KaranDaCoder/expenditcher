@@ -114,6 +114,7 @@ export const getExpenseDetails = async(expense_id) => {
      console.log(error);
    }
 }
+
 export const getUserPaymentModes = async () => {
   try {
     const request = await fetch(`${process.env.AUTH_URL}/api/payment-modes`, {

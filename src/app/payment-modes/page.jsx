@@ -39,7 +39,7 @@ const PaymentModes = async () => {
               <div className='flex flex-col items-center justify-center w-full gap-3'>
                 <h2 className='w-full text-sm font-light text-center lg:text-lg'>{p.payment_mode_type}</h2>
                 <h2 className='text-sm italic font-light text-center'>Added on: {moment(p.createdAt).format('MMM Do YYYY')}</h2>
-                {p.payment_mode_type !== 'Cash' && <EditDeleteBtn payment_mode_id={p._id}/>}
+                {p.payment_mode_type !== 'Cash' && <EditDeleteBtn payment_mode_id={p._id} name={p.payment_mode_name}/>}
               </div>
             </div>       
           ))}

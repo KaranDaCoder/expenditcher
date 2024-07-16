@@ -39,7 +39,7 @@ const Dashboard = async () => {
         <ExpensesByStatus completed={completedExpenses.count} pending={pendingExpenses.count} canceled={canceledExpenses.count} />
         <ExpensesByCategory data={data}/>
         <div className='col-span-1 row-start-4 bg-white border min-h-60 rounded-xl'>
-          <h2>CHART 1</h2>
+          <h2>MOST EXPENSIVE</h2>
         </div>
         <div className='col-span-1 col-start-2 row-start-4 bg-white border min-h-60 rounded-xl'>
           <h2>CHART 1</h2>

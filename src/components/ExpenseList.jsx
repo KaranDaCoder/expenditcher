@@ -32,7 +32,6 @@ const ExpenseList = ({ data }) => {
               <td className='hidden text-center capitalize w-60 lg:block'>{expense.status.toString()}</td>
               <td className='hidden text-center capitalize w-60 lg:block'>{expense.category}</td>
               <td className='font-semibold tracking-wide text-center text-green-700 w-60'>{format(expense.amount / 100)}</td>
-              {/* <td><Link href={'/'} className='text-2xl transition-all duration-500 w-fit hover:font-semibold'>{'>'}</Link></td> */}
             </tr>
           ))}
         </tbody>

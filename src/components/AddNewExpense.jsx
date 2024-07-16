@@ -2,19 +2,19 @@
 import { categories_array } from '@/lib/categoryList'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
-import { Flip, toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 
 const AddNewExpense = ({ owner_id, data }) => {
  const notify = (message) => toast(message, {
-  position: "top-center",
+  position: "top-right",
   autoClose: 2500,
   hideProgressBar: true,
   closeOnClick: false,
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
-  theme: "dark",
-  transition: Flip,
+  theme: "light",
+  transition: Slide,
   })
  const router = useRouter();
  const [expense, setExpense] = useState({
@@ -53,7 +53,6 @@ const AddNewExpense = ({ owner_id, data }) => {
  const handleAddExpenseRequest = async (e) => {
   e.preventDefault();
   try {
-   console.log(expense)
    const request = await fetch(`/api/expenses`, { method: 'POST', cache: 'no-cache', redirect: 'follow', body: JSON.stringify(expense) });
    const response = await request.json();
    if (request.ok) {
@@ -200,6 +199,7 @@ const AddNewExpense = ({ owner_id, data }) => {
       value={expense.desc}
       onChange={handleFormSubmission}
      />
+     {/* <Editor value={expense.desc} onChange={handleFormSubmission} name='desc' id='desc' /> */}
     </div>
     <div className='flex flex-col justify-around w-full gap-2 mt-4 lg:flex-row'>
      <button

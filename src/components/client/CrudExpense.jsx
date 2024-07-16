@@ -3,9 +3,8 @@ import React, { useState } from 'react'
 import DialogBox from '../DialogBox'
 import { useRouter } from 'next/navigation';
 
-const CrudExpense = ({expense_id, expense_name}) => {
- const [expenseDialog , setExpenseDialog] = useState(false);
- console.log(`Expense Dialog :` , expenseDialog);
+const CrudExpense = ({expense_id, name}) => {
+ const [dialogBox , setDialogBox] = useState(false);
   const router = useRouter();
   console.log(`EXPENSE ID`, expense_id)
   const handleDeleteExpense = async () => {
@@ -27,9 +26,9 @@ const CrudExpense = ({expense_id, expense_name}) => {
     <>
    <div className='flex justify-around w-full gap-4'>
     <button className='w-1/2 py-2 text-sm tracking-wide bg-white rounded-lg text-slate-800 lg:text-base'>Edit Expense</button>
-    <button className='w-1/2 py-2 text-sm tracking-wide text-white rounded-lg lg:text-base bg-slate-800' onClick={() => setExpenseDialog(!expenseDialog)}>Delete Expense</button>
+    <button className='w-1/2 py-2 text-sm tracking-wide text-white rounded-lg lg:text-base bg-slate-800' onClick={() => setDialogBox(!dialogBox)}>Delete Expense</button>
    </div>
-      {expenseDialog && <DialogBox expense_name={expense_name} expenseDialog={expenseDialog} setExpenseDialog={setExpenseDialog} handleDeleteExpense={handleDeleteExpense}/>}
+      {dialogBox && <DialogBox name={name} dialogBox={dialogBox} setDialogBox={setDialogBox} handleDelete={handleDeleteExpense}/>}
     </>
   )
 }

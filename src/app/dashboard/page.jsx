@@ -26,12 +26,12 @@ const Dashboard = async () => {
   const pendingExpenses = expensesByFilter(data, 'status', 'pending');
   const canceledExpenses = expensesByFilter(data, 'status', 'canceled');
   return (
-    <div className='flex flex-col w-full h-full gap-4'>
+    <div className='flex flex-col w-full h-full gap-4 lg:gap-0'>
       <div className='w-full h-8'>
         <BreadCrumb link={'Dashboard'} />
       </div>
       <div className='flex items-center justify-center'>
-        <h1 className='text-4xl font-semibold capitalize'>Hello, {user?.result?.name}.</h1>
+        <h1 className='mb-1 text-2xl font-semibold tracking-wide capitalize lg:text-4xl'> <span className='font-light text-green-800'>Hola,</span> {user?.result?.name}</h1>
       </div>
       <div className='flex flex-col w-full gap-2 lg:grid lg:grid-rows-4 lg:grid-cols-2'>
         <AtAGlance data={data}/>

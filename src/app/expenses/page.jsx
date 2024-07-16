@@ -24,11 +24,12 @@ const ExpensesList = async ({ searchParams }) => {
         
       </div>
       
-      <div className='flex flex-col items-center justify-center w-full h-auto gap-2'>
+      <div className='flex flex-col items-center justify-center w-full h-auto gap-4'>
         <div className='flex flex-col items-center justify-center w-full h-auto py-4 bg-white border rounded-lg shadow-md lg:w-1/2'>
-          <div className='flex flex-col items-center justify-start h-full gap-1 p-4'>
-            <h2 className='w-full mt-4 text-4xl font-light tracking-wider text-center text-green-700'>{format((searchParams?.search ? data?.expense_total : data?.expense_total))}</h2>
-            <h2 className='text-base lg:text-lg'>Your expenses on <span className='font-semibold'>{searchParams?.status || (searchParams?.payment_mode_id && userPaymentMode?.result?.payment_mode_name) || searchParams?.category || 'All Expenses'}</span> from <span className='font-semibold'>{data?.count}</span> transactions. </h2>
+          <div className='flex flex-col items-center justify-start h-full gap-4 p-4'>
+            <h1 className='w-full text-xl font-light tracking-wider text-center uppercase lg:text-2xl'>Summary</h1>
+            <h2 className='w-full lg;text-4xl text-3xl font-light tracking-wider text-center text-green-700'>{format((searchParams?.search ? data?.expense_total : data?.expense_total))}</h2>
+            <h2 className='w-full text-sm text-center lg:text-base'>You've spent on/using <span className='font-semibold'>{searchParams?.status || (searchParams?.payment_mode_id && userPaymentMode?.result?.payment_mode_name) || searchParams?.category || 'All Expenses'}</span> from <span className='font-semibold'>{data?.count}</span> expenses. </h2>
           </div>
         </div>
         <Search/>

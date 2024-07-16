@@ -66,14 +66,13 @@ const AddNewExpense = ({ owner_id, data }) => {
   } catch (error) {
    console.log(error)
   }
-  // router.refresh();
  }
  return (
-  <div className='w-full p-2 mx-auto bg-white border shadow-xl lg:h-auto lg:w-3/4 rounded-xl'>
+  <div className='w-full p-2 mx-auto bg-white border shadow-lg lg:h-auto lg:w-3/4 rounded-xl'>
    <form
     onSubmit={handleAddExpenseRequest}
     onReset={handleFormReset}
-    className='flex flex-col w-full h-full p-2 text-sm bg-white lg:gap-4 lg:p-10 text-slate-600'
+    className='flex flex-col w-full h-full py-1 text-sm lg:gap-4 lg:p-10 text-slate-600'
    >
     <div className='flex flex-col w-full h-auto gap-2 lg:gap-4 lg:flex-row lg:py-0'>
      <div className='flex flex-col items-center justify-center min-w-40'>
@@ -201,19 +200,20 @@ const AddNewExpense = ({ owner_id, data }) => {
      />
      {/* <Editor value={expense.desc} onChange={handleFormSubmission} name='desc' id='desc' /> */}
     </div>
-    <div className='flex flex-col justify-around w-full gap-2 mt-4 lg:flex-row'>
-     <button
-      type='submit'
-      className={`${(expense.name.length < 5 || expense.amount === '' || expense.date === '') ? 'hidden' : 'block'} lg:w-1/2 w-full px-4 py-3 text-white rounded-lg shadow-md bg-slate-800`}
-     >
-      Add
-     </button>
+    <div className='flex flex-row justify-around w-full gap-2 mt-4'>
      <button
       type='reset'
-      className='w-full px-4 py-3 border rounded-lg shadow-md lg:w-1/2'
+      className='w-1/2 px-2 py-2 border rounded-lg shadow-md lg:px-4 lg:py-3 lg:w-1/2'
      >
       Cancel
      </button>
+     <button
+      type='submit'
+      className={`${(expense.name.length < 5 || expense.amount === '' || expense.date === '') ? 'hidden' : 'block'} lg:w-1/2 w-1/2 px-2 py-2 lg:py-3 text-white rounded-lg shadow-md bg-slate-800`}
+     >
+      Add
+     </button>
+    
 
     </div>
 

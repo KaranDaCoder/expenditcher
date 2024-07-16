@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
 
-      <body className={`${poppins.className} select-none text-pretty subpixel-antialiased  text-slate-600 bg-slate-50 container mx-auto px-2 overflow-x-hidden `}>
+      <body className={`${poppins.className} select-none text-balance   text-slate-600 bg-slate-50 container mx-auto px-2 overflow-x-hidden`}>
       <ToastContainer />
         <Navbar/>
-        <main className="w-full lg:h-[calc(100dvh-8.5rem)] h-[calc(100dvh-5rem)] overflow-y-auto overflow-x-hidden flex flex-col gap-2" draggable='false'>
+        <main className="w-full lg:h-[calc(100dvh-9.5rem)] h-[calc(100dvh-6rem)] overflow-y-auto overflow-x-hidden flex flex-col mb-4" draggable='false' >
         {children}
         </main>
         <Footer/>

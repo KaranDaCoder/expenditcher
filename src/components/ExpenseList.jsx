@@ -38,7 +38,7 @@ const ExpenseList = ({ data }) => {
       </table> : <div className='z-20 flex justify-center w-full m-auto mt-2 bg-white h-96'>
         <div className='flex flex-col items-center justify-center w-full h-full border shadow-md space-y-7 rounded-xl'>
           <h1 className='text-3xl font-semibold capitalize'>hello, ditcher!</h1>
-          <h2 className='w-full text-base text-center'>You have No Expenses Here. You can start adding expenses by clicking on the link below.</h2>
+          <h2 className='w-full text-sm text-center lg:text-base'>You have No Expenses Here. You can start adding expenses by clicking on the link below.</h2>
           <Link href={"/add-new-expense"} className='px-6 py-3 tracking-wide text-white uppercase rounded-md bg-slate-600'>Add New Expense</Link>
         </div>
       </div>}

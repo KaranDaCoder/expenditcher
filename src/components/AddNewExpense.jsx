@@ -15,7 +15,7 @@ const AddNewExpense = ({ owner_id, data }) => {
   progress: undefined,
   theme: "light",
   transition: Slide,
-  })
+ })
  const router = useRouter();
  const [expense, setExpense] = useState({
   category: 'Other Services',
@@ -72,11 +72,11 @@ const AddNewExpense = ({ owner_id, data }) => {
    <form
     onSubmit={handleAddExpenseRequest}
     onReset={handleFormReset}
-    className='flex flex-col w-full h-full py-1 text-sm lg:gap-4 lg:p-10 text-slate-600'
+    className='flex flex-col w-full h-full py-1 text-base lg:text-sm lg:gap-4 lg:p-10 text-slate-600'
    >
     <div className='flex flex-col w-full h-auto gap-2 lg:gap-4 lg:flex-row lg:py-0'>
      <div className='flex flex-col items-center justify-center min-w-40'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Category</p>
+      <p className='hidden lg:text-sm text-slate-500 lg:flex'>Category</p>
       <select
        name='category'
        id='category'
@@ -91,7 +91,7 @@ const AddNewExpense = ({ owner_id, data }) => {
       </select>
      </div>
      <div className='flex flex-col items-center justify-center w-full'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Expense Name</p>
+      <p className='hidden text-slate-500 lg:flex'>Expense Name</p>
       <input
        type='text'
        name='name'
@@ -110,18 +110,18 @@ const AddNewExpense = ({ owner_id, data }) => {
     </div>
     <div className='flex flex-col w-full gap-2 py-2 lg:flex-row lg:justify-around lg:py-0'>
      <div className='flex flex-col items-center justify-center w-full lg:w-48'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Date</p>
+      <p className='hidden text-slate-500 lg:flex'>Date</p>
       <input
        type='date'
        name='date'
        id='date'
-       className='flex items-center justify-around w-full h-10 text-sm text-center bg-white border rounded-md outline-none cursor-pointer'
+       className='flex items-center justify-around w-full h-10 text-center bg-white border rounded-md outline-none cursor-pointer '
        value={expense.date}
        onChange={handleFormSubmission}
       />
      </div>
      <div className='flex flex-col items-center justify-center w-full'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Payment Mode</p>
+      <p className='hidden text-slate-500 lg:flex'>Payment Mode</p>
 
       <select
        name='payment_mode_id'
@@ -138,7 +138,7 @@ const AddNewExpense = ({ owner_id, data }) => {
     </div>
     <div className='flex flex-col w-full py-2 lg:gap-6 lg:flex-row lg:justify-center lg:py-0'>
      <div className='flex flex-col items-center justify-center min-w-40'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Amount</p>
+      <p className='hidden text-slate-500 lg:flex'>Amount</p>
       <input
        type='number'
        name='amount'
@@ -156,7 +156,7 @@ const AddNewExpense = ({ owner_id, data }) => {
       />
      </div>
      <div className='flex flex-col items-center justify-start py-2 min-w-40 lg:py-0'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>State</p>
+      <p className='hidden text-slate-500 lg:flex'>State</p>
       <input
        type='text'
        name='state'
@@ -171,7 +171,7 @@ const AddNewExpense = ({ owner_id, data }) => {
       />
      </div>
      <div className='flex flex-col items-center justify-start bg-white min-w-40'>
-      <p className='hidden text-sm text-slate-500 lg:flex'>Status</p>
+      <p className='hidden text-slate-500 lg:flex'>Status</p>
       <select
        name='status'
        id='status'
@@ -188,17 +188,16 @@ const AddNewExpense = ({ owner_id, data }) => {
     </div>
 
     <div className='flex flex-col items-center justify-center w-full py-2 lg:py-0'>
-     <p className='hidden text-sm text-slate-500 lg:flex'>Description</p>
+     <p className='hidden text-slate-500 lg:flex'>Description</p>
      <textarea
       name='desc'
       id='desc'
       placeholder='description'
       rows={10}
-      className='w-full px-2 text-sm border rounded-md outline-none resize-none focus:border-green-600 placeholder:italic placeholder:capitalize'
+      className='w-full p-2 border rounded-md outline-none resize-none focus:border-green-600 placeholder:italic placeholder:capitalize'
       value={expense.desc}
       onChange={handleFormSubmission}
      />
-     {/* <Editor value={expense.desc} onChange={handleFormSubmission} name='desc' id='desc' /> */}
     </div>
     <div className='flex flex-row justify-around w-full gap-2 mt-4'>
      <button
@@ -213,12 +212,7 @@ const AddNewExpense = ({ owner_id, data }) => {
      >
       Add
      </button>
-    
-
     </div>
-
-
-
    </form>
   </div>
  )

@@ -1,9 +1,7 @@
 import { categories_array } from '@/lib/categoryList'
 import { expensesByFilter } from '@/utils/getExpensesByFilter'
-import LocalAirportIcon from '@mui/icons-material/LocalAirport';
 
 import Link from 'next/link'
-import React from 'react'
 
 const ExpensesByCategory = ({ data }) => {
   return (
@@ -14,7 +12,7 @@ const ExpensesByCategory = ({ data }) => {
         {categories_array.map(async category => (
           <div className='flex items-center justify-between w-full hover:font-semibold hover:text-slate-700' key={category?._id}>
             <Link href={`/expenses?category=${category?.name}`} className='flex items-center gap-2'>
-              <p>{category?.icon}</p>
+              {category?.icon}
               <p className='text-sm lg:text-base'>{category?.name}</p>
             </Link>
             <p className='text-sm lg:text-base'>{(expensesByFilter(data, 'category', category?.name))?.count}</p>

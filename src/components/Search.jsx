@@ -15,8 +15,8 @@ const Search = () => {
   replace(`${pathname}?${params.toString()}`);
  }, 500);
   return (
-   <div className='flex flex-col items-center justify-center w-full h-12 bg-white rounded-lg shadow-md lg:w-5/6'>
-    <input type="text" placeholder='search by name or description' className='w-full h-full px-4 text-sm border rounded-lg shadow-md outline-none placeholder:italic placeholder:text-sm' onChange={(e) => handleSearch(e.target.value)}
+   <div className='flex flex-col items-center justify-center w-full h-12 text-base bg-white rounded-lg shadow-md lg:w-5/6 lg:text-sm'>
+    <input type="text" placeholder='search by name or description' className='w-full h-full px-4 border rounded-lg shadow-md outline-none placeholder:italic placeholder:text-sm' onChange={(e) => handleSearch(e.target.value)}
      defaultValue={searchParams.get('search')?.toString()} />
    </div>
   )

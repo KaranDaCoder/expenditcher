@@ -16,12 +16,11 @@ const AddNewExpense = ({ owner_id, data }) => {
   theme: "light",
   transition: Slide,
  })
- const router = useRouter();
  const [expense, setExpense] = useState({
   category: 'Other Services',
   name: '',
   amount: '',
-  state: '',
+  state: 'MN',
   payment_mode_id: data?.result[0]?._id,
   date: new Date(),
   status: 'completed',
@@ -41,7 +40,7 @@ const AddNewExpense = ({ owner_id, data }) => {
    category: 'Other Services',
    name: '',
    amount: '',
-   state: '',
+   state: 'MN',
    payment_mode_id: data?.result[0]?._id,
    date: new Date(),
    status: 'completed',
@@ -84,7 +83,6 @@ const AddNewExpense = ({ owner_id, data }) => {
        value={expense.category}
        onChange={handleFormSubmission}
       >
-       {/* <option value="Other Services" defaultValue={true}>Other Services</option> */}
        {categories_array?.map(cat => (
         <option value={cat?.name} key={cat?.name} className='capitalize bg-white'>{cat?.name}</option>
        ))}

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
       <ToastContainer />
         <Navbar/>
         <main className="w-full lg:h-[calc(100dvh-9.5rem)] h-[calc(100dvh-6rem)] overflow-y-auto overflow-x-hidden flex flex-col mb-4" draggable='false' >
+       
         {children}
+       
         </main>
         <Footer/>
         </body>

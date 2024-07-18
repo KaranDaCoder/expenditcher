@@ -21,7 +21,7 @@ export const categories_array = [
     icon: <LocalGroceryStoreIcon color='success' fontSize='medium' />,
   },
   {
-    name: 'Dining & Sipping',
+    name: 'Dining/Sipping',
     icon: <FlatwareIcon color='success' fontSize='medium' />,
   },
   {

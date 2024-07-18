@@ -8,7 +8,7 @@ const AddNewExpense = ({ owner_id, data }) => {
  const router = useRouter();
  const notify = (message) => toast(message, {
   position: "top-right",
-  autoClose: 2500,
+  autoClose: 3000,
   hideProgressBar: true,
   closeOnClick: false,
   pauseOnHover: true,
@@ -56,7 +56,7 @@ const AddNewExpense = ({ owner_id, data }) => {
    const request = await fetch(`/api/expenses`, { method: 'POST', cache: 'no-cache', redirect: 'follow', body: JSON.stringify(expense) });
    const response = await request.json();
    if (request.ok) {
-    notify(response?.success);
+    notify(`${response?.success} to  ${expense?.category}`);
     handleFormReset(e);
    } else {
     console.log(response)

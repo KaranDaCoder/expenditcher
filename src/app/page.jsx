@@ -13,24 +13,24 @@ const Home = () => {
         <div className="items-center justify-around hidden w-full h-auto mx-auto lg:flex ">
           <div className="w-1/3 h-auto py-4 space-y-2 text-white transition-all duration-300 shadow-lg rounded-xl bg-slate-800 hover:scale-105">
             <h2 className="w-full text-lg font-bold tracking-wider text-center">ex·pend·i·ture</h2>
-            <p className="w-full text-sm text-center">/ikˈspendəCHər,ekˈspendəCHər/</p>
+            <p className="w-full text-sm text-center">/ik&apos;spendəCHər,ek&apos;spendəCHər/</p>
             <p className="w-full text-sm italic text-center text-slate-300">noun</p>
             <p className="w-full text-sm text-center text-white">the action of spending funds.</p>
-            <p className="w-full text-sm text-center text-slate-300">"the expenditure of taxpayers' money"</p>
+            <p className="w-full text-sm text-center text-slate-300">&quot;the expenditure of taxpayers' money&quot;</p>
             <p className="w-full px-10 text-xs italic text-end text-slate-400"> - Oxford</p>
           </div>
           <p className="text-2xl italic font-light">v.</p>
           <div className="w-1/3 h-auto py-4 space-y-2 text-white transition-all duration-300 shadow-lg rounded-xl bg-slate-800 hover:scale-105">
             <h2 className="w-full text-lg font-bold tracking-wider text-center">ex·pen·ditch·er</h2>
-            <p className="w-full text-sm text-center">/ikˈspendəCHər,ekˈspendəCHər/</p>
+            <p className="w-full text-sm text-center">/ik&apos;spendəCHər,ek&apos;spendəCHər/</p>
             <p className="w-full text-sm italic text-center text-slate-300">adj.</p>
             <p className="w-full text-sm text-center text-white">the action of ditching your expense tracking.</p>
-            <p className="w-full text-sm text-center text-slate-300">"the expenditcher app helps me track my expenses"</p>
+            <p className="w-full text-sm text-center text-slate-300">&quot;the expenditcher app helps me track my expenses&quot;</p>
             <p className="w-full px-10 text-xs italic text-end text-slate-400"> - expenditcher</p>
           </div>
         </div>
       </div>
-      <h2 className="w-full text-xl text-center lg:text-2xl">Expenditcher : <span className="italic text-slate-500">what{`'`}s inside</span> </h2>
+      <h2 className="w-full text-xl text-center lg:text-2xl">Expenditcher : <span className="italic text-slate-500">what&apos;s inside</span> </h2>
       
       <div className="flex flex-col items-center justify-between w-full h-auto gap-2 lg:flex-row bg-blend-screen">
         <div className="flex flex-col items-center justify-center w-full h-full space-y-2 transition-all duration-500 ease-in-out border border-l lg:w-1/2 rounded-xl bg-blue-950 text-slate-100 hover:rotate-12">

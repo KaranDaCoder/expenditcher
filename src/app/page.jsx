@@ -16,7 +16,7 @@ const Home = () => {
             <p className="w-full text-sm text-center">/ik&apos;spendəCHər,ek&apos;spendəCHər/</p>
             <p className="w-full text-sm italic text-center text-slate-300">noun</p>
             <p className="w-full text-sm text-center text-white">the action of spending funds.</p>
-            <p className="w-full text-sm text-center text-slate-300">&quot;the expenditure of taxpayers' money&quot;</p>
+            <p className="w-full text-sm text-center text-slate-300">&quot;the expenditure of taxpayers&apos; money&quot;</p>
             <p className="w-full px-10 text-xs italic text-end text-slate-400"> - Oxford</p>
           </div>
           <p className="text-2xl italic font-light">v.</p>

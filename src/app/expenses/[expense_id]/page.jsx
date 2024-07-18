@@ -23,7 +23,7 @@ const ExpenseInfo = async ({ params }) => {
         <BreadCrumb link={'Dashboard'} activeLink1={expense?.result?.name} activeLink={'expenses'} />
       </div>
       <h1 className='w-full text-2xl font-semibold tracking-wide text-center uppercase'>Expense Details</h1>
-      {expense?.result?.name ? <div className='flex flex-col justify-center w-full gap-4 p-4 mx-auto border shadow-xl bg-yellow-400/30 lg:w-1/3 h-5/6 rounded-2xl'>
+      {expense?.result?.name ? <div className='flex flex-col justify-center w-full gap-4 p-4 mx-auto border shadow-xl bg-yellow-400/30 lg:w-1/2 h-5/6 rounded-2xl'>
         <div className='flex flex-col w-full gap-5 p-2'>
           <h2 className='w-full text-5xl font-light text-center capitalize text-slate-700'>{expense?.result?.name}</h2>
           <h2 className='w-full text-5xl font-light text-center text-green-700 capitalize'>{format(expense?.result?.amount / 100)}</h2>

@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { Slide, toast } from 'react-toastify';
 
 const AddNewExpense = ({ owner_id, data }) => {
+ const router = useRouter();
  const notify = (message) => toast(message, {
   position: "top-right",
   autoClose: 2500,
@@ -61,7 +62,7 @@ const AddNewExpense = ({ owner_id, data }) => {
     console.log(response)
     throw new Error(request.error);
    }
-
+   router.refresh();
   } catch (error) {
    console.log(error)
   }

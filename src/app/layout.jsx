@@ -26,7 +26,6 @@ export const Viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta> */}
       <body className={`${poppins.className} select-none text-balance   text-slate-600 bg-slate-50 container mx-auto px-2 overflow-x-hidden`}>
       <ToastContainer />
         <Navbar/>

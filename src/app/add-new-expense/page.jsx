@@ -13,7 +13,7 @@ const ExpensePage = async () => {
   console.log(paymentModes)
  
   return (
-    <div className='flex flex-col w-full h-full gap-4'>
+    <div className='flex flex-col w-full h-screen gap-4'>
     <div className='w-full h-8'>
     <BreadCrumb link={'Dashboard'} activeLink={'add new expense'} />
     </div>

@@ -44,6 +44,12 @@ const Dashboard = async () => {
         <div className='col-span-1 col-start-2 row-start-4 bg-white border min-h-60 rounded-xl'>
           <h2>CHART 1</h2>
         </div>
+        <div className='col-span-1 col-start-2 row-start-5 bg-white border min-h-60 rounded-xl'>
+          <h2>CHART 1</h2>
+        </div>
+        <div className='col-span-1 col-start-2 row-start-4 bg-white border min-h-60 rounded-xl'>
+          <h2>CHART 1</h2>
+        </div>
       
 
       </div>

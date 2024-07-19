@@ -9,7 +9,7 @@ import { auth } from '@/auth'
 const Navbar = async () => {
  const session = await auth();
   return (
-    <nav className='sticky top-0 w-full h-12 py-2 border-b lg:h-24 bg-inherit'>
+    <nav className='relative w-full h-12 py-2 border-b lg:h-24 bg-inherit'>
      <div className='flex items-center justify-between w-full h-full lg:h-1/2'>
      {session && <NavbarMobile/>}
      <Link href={"/"} className='text-xl font-light tracking-wide lg:text-3xl'>EXPEN<span className='font-semibold'>DITCHER</span></Link>

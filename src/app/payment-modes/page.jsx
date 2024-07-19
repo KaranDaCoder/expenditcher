@@ -13,7 +13,7 @@ const PaymentModes = async () => {
   const data = await getUserPaymentModes();
   console.log(data);
   return (
-    <main className='flex flex-col w-full h-full gap-4'>
+    <main className='flex flex-col w-full h-screen gap-4'>
       <div className='w-full h-8'>
       <BreadCrumb link={'Dashboard'} activeLink={'Payment Modes'} />
       </div>
